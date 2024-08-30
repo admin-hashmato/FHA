@@ -1,54 +1,78 @@
-// Updated script.js
 const wheel = document.getElementById('wheel');
 const spinBtn = document.getElementById('spin-btn');
 const ctx = wheel.getContext('2d');
-const segments = ['Prize 1', 'Prize 2', 'Prize 3', 'Prize 4', 'Prize 5', 'Prize 6','Raif',"Feivel","Si Xue","Sky"];
-const segmentColors = ["#2362fb","#FFFFFF","#2362fb","#FFFFFF","#2362fb","#FFFFFF","#2362fb","#FFFFFF","#2362fb","#FFFFFF"];
+
+const segments = [
+    'Raif', 'Sky', 'Feivel', 'Si Xue', 'Phyline',
+    'Prize 6', 'Prize 7', 'Prize 8', 'Prize 9', 'Prize 10',
+    'Prize 11', 'Prize 12', 'Prize 13', 'Prize 14', 'Prize 15'
+];
+const segmentColors = [
+    '#FF5733', '#33FF57', '#3357FF', '#F333FF', '#FF3333',
+    '#33FFF9', '#FF5733', '#33FF57', '#3357FF', '#F333FF',
+    '#FF3333', '#33FFF9', '#FF5733', '#33FF57', '#3357FF'
+];
 const numSegments = segments.length;
-const anglePerSegment = (2 * Math.PI) / numSegments;
+let anglePerSegment;
 let currentAngle = 0;
 
+function resizeCanvas() {
+    const container = wheel.parentElement;
+    const size = Math.min(container.offsetWidth, container.offsetHeight);
+
+    // Set canvas size
+    wheel.width = size;
+    wheel.height = size;
+
+    // Center the drawing origin
+    ctx.translate(size / 2, size / 2);
+
+    // Calculate angle per segment
+    anglePerSegment = (2 * Math.PI) / numSegments;
+
+    // Redraw the wheel
+    drawWheel();
+}
+
 function drawWheel() {
+    ctx.clearRect(-wheel.width / 2, -wheel.height / 2, wheel.width, wheel.height);
+
     for (let i = 0; i < numSegments; i++) {
         const startAngle = currentAngle + i * anglePerSegment;
         const endAngle = startAngle + anglePerSegment;
-        
-        // Draw the segments
+
         ctx.beginPath();
-        ctx.arc(250, 250, 250, startAngle, endAngle);
-        ctx.lineTo(250, 250);
+        ctx.arc(0, 0, wheel.width / 2, startAngle, endAngle);
+        ctx.lineTo(0, 0);
         ctx.fillStyle = segmentColors[i];
         ctx.fill();
 
-        // Draw the text
         ctx.save();
-        ctx.translate(250, 250);
         ctx.rotate((startAngle + endAngle) / 2);
         ctx.textAlign = "right";
-        ctx.fillStyle = "black";
-        ctx.font = "20px Arial";
-        ctx.fillText(segments[i], 200, 10);
+        ctx.fillStyle = "white";
+        ctx.font = `${Math.min(wheel.width / 20, 24)}px Arial`;
+        ctx.fillText(segments[i], wheel.width / 2 - 10, 10);
         ctx.restore();
     }
 
-    // Draw the indicator (triangle)
     drawIndicator();
 }
 
 function drawIndicator() {
     ctx.beginPath();
-    ctx.moveTo(250, 470); // Right side of the wheel (center of canvas)
-    ctx.lineTo(280, 500); // Top left of the triangle
-    ctx.lineTo(220, 500);
+    ctx.moveTo(wheel.width / 2 * 0, -wheel.height / 2 * -0.8);
+    ctx.lineTo(wheel.width / 2 * 2, -wheel.height / 2 * -5);
+    ctx.lineTo(wheel.width / 2 * -2, -wheel.height / 2 * -5);
     ctx.closePath();
-    ctx.fillStyle = "#000000"; // Black color for the indicator
+    ctx.fillStyle = "#000";
     ctx.fill();
 }
 
 function spinWheel() {
-    const spinAngle = Math.random() * 360 + 360 * 3; // Random spin angle + 3 full rotations
-    const spinDuration = 5000; // Spin duration in milliseconds
-    
+    const spinAngle = Math.random() * 360 + 360 * 5;
+    const spinDuration = 3000 + Math.random() * 2000;
+
     const startTime = Date.now();
 
     function animateSpin() {
@@ -57,7 +81,7 @@ function spinWheel() {
         const easing = easeOut(progress);
 
         currentAngle = spinAngle * easing;
-        ctx.clearRect(0, 0, wheel.width, wheel.height);
+        ctx.clearRect(-wheel.width / 2, -wheel.height / 2, wheel.width, wheel.height);
         drawWheel();
 
         if (progress < 1) {
@@ -75,11 +99,22 @@ function easeOut(t) {
 }
 
 function showPrize() {
-    const winningAngle = (2 * Math.PI - (currentAngle % (2 * Math.PI))) + Math.PI / 2; // Adjust angle so 0 is at the top
+    const winningAngle = (2 * Math.PI - (currentAngle % (2 * Math.PI))) + Math.PI / 2;
     const segmentIndex = Math.floor(winningAngle / anglePerSegment) % numSegments;
-    alert("You won " + segments[segmentIndex]);
+    const prize = segments[segmentIndex];
+
+    //alert("You won " + prize);
+
+    setTimeout(() => {
+        window.location.href = `result.html?prize=${encodeURIComponent(prize)}`;
+    }, 700); // 2000 milliseconds = 2 seconds delay
 }
 
-spinBtn.addEventListener('click', spinWheel);
+// Resize canvas on window resize
+window.addEventListener('resize', resizeCanvas);
 
-drawWheel();
+// Initial canvas setup
+resizeCanvas();
+
+// Add spin button event listener
+spinBtn.addEventListener('click', spinWheel);

@@ -8,16 +8,33 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body class="bg-light">
-    <div class="container vh-100 d-flex justify-content-center align-items-center">
-        <div class="text-center">
-            <h2>Welcome to the Next Page!</h2>
-            <p>Your sign-up was successful.</p>
-            <!-- Add more content or redirection as needed -->
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
+                <h3 class="text-center mb-4">Welcome, <span id="displayName"></span></h3>
+                <p><strong>Title:</strong> <span id="displayTitle"></span></p>
+                <p><strong>Phone Number:</strong> <span id="displayPhone"></span></p>
+                <p><strong>Email:</strong> <span id="displayEmail"></span></p>
+                <p><strong>Company:</strong> <span id="displayCompany"></span></p>
+                <div class="d-grid">
+                    <a href="index.html" class="btn btn-primary">Back to Sign Up</a>
+                </div>
+            </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Get URL parameters (this assumes the form uses the GET method)
+        const urlParams = new URLSearchParams(window.location.search);
+
+        // Display form data on the page
+        document.getElementById('displayName').textContent = urlParams.get('name');
+        document.getElementById('displayTitle').textContent = urlParams.get('title');
+        document.getElementById('displayPhone').textContent = urlParams.get('phone');
+        document.getElementById('displayEmail').textContent = urlParams.get('email');
+        document.getElementById('displayCompany').textContent = urlParams.get('company');
+    </script>
 </body>
 
 </html>

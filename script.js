@@ -5,12 +5,13 @@ const ctx = wheel.getContext('2d');
 const segments = [
     'Raif', 'Sky', 'Feivel', 'Si Xue', 'Phyline',
     'Prize 6', 'Prize 7', 'Prize 8', 'Prize 9', 'Prize 10',
-    'Prize 11', 'Prize 12', 'Prize 13', 'Prize 14', 'Prize 15'
+    'Prize 11', 'Prize 12', 'Prize 13', 'Prize 14', 'Prize 15','Prize 16'
 ];
 const segmentColors = [
-    '#FF5733', '#33FF57', '#3357FF', '#F333FF', '#FF3333',
-    '#33FFF9', '#FF5733', '#33FF57', '#3357FF', '#F333FF',
-    '#FF3333', '#33FFF9', '#FF5733', '#33FF57', '#3357FF'
+    '#2362fb','#f39b2d','#2362fb','#f39b2d',
+    '#2362fb','#f39b2d','#2362fb','#f39b2d',
+    '#2362fb','#f39b2d','#2362fb','#f39b2d',
+    '#2362fb','#f39b2d','#2362fb','#f39b2d'
 ];
 const numSegments = segments.length;
 let anglePerSegment;
@@ -106,9 +107,11 @@ function showPrize() {
     //alert("You won " + prize);
 
     setTimeout(() => {
-        window.location.href = `result.html?prize=${encodeURIComponent(prize)}`;
-    }, 700); // 2000 milliseconds = 2 seconds delay
+        // Replace the current page with the result page
+        window.location.replace(`result.html?prize=${encodeURIComponent(prize)}`);
+    }, 2000); // 2000 milliseconds = 2 seconds delay
 }
+
 
 // Resize canvas on window resize
 window.addEventListener('resize', resizeCanvas);

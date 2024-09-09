@@ -31,18 +31,54 @@
     </style>
 </head>
 <body>
-    <div class="prize-container">
+    <div class="prize-container" id="result">
         <h1>Congratulations!</h1>
         <p id="prize-display">You won <span id="prize"></span>!</p>
     </div>
 
     <script>
-        // Get the query parameter from the URL
+        // Extract the prize from the URL parameters
         const urlParams = new URLSearchParams(window.location.search);
         const prize = urlParams.get('prize');
+        document.getElementById('prize').textContent = prize || "Nothing";
 
-        // Display the prize
-        document.getElementById('prize').textContent = prize;
+        // Push an extra state into the history stack
+        window.history.pushState(null, null, window.location.href);
+
+        // Flag to detect whether user interaction has occurred
+        let hasInteracted = false;
+
+        // Detect any click or keydown to mark interaction
+        document.addEventListener('click', () => {
+            hasInteracted = true;
+        });
+        document.addEventListener('keydown', () => {
+            hasInteracted = true;
+        });
+
+        // Detect when the user clicks the back button or uses navigation
+        window.addEventListener('popstate', function (event) {
+            if (!hasInteracted) {
+                // If no interaction happened, set focus and return
+                document.body.focus();
+                return;
+            }
+
+            const userConfirmed = confirm('Are you sure you want to go back?');
+            if (userConfirmed) {
+                window.history.go(-2); // Go back two steps to skip the pushed state
+            } else {
+                // Re-push the current state to avoid going back
+                window.history.pushState(null, null, window.location.href);
+            }
+        });
+
+        // Detect before the page is closed or refreshed
+        window.addEventListener('beforeunload', function (e) {
+            const confirmationMessage = 'Are you sure you want to leave this page?';
+            e.returnValue = confirmationMessage; // Standard for most browsers
+            return confirmationMessage; // For older browsers
+        });
     </script>
 </body>
 </html>

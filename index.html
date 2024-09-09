@@ -6,85 +6,240 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mobile Sign-Up Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .checkbox-container label {
+            margin-left: 8px;
+        }
+
+        /* Media query for kiosks or larger screens */
+        @media (min-width: 1024px) {
+            .checkbox-container {
+                font-size: 1.2em;
+                padding: 5px;
+            }
+        }
+
+        /* Media query for mobile */
+        @media (max-width: 768px) {
+            .checkbox-container label {
+                font-size: 0.9em;
+                
+            }
+        }
+    </style>
 </head>
 
-<body>
+<body style="background-color: whitesmoke; color: black;">
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-12 col-md-6">
                 <img src="Hashmato (1).png" class="container-fluid d-flex justify-content-center align-items-center  ">
                 <h4 class="text-center mb-4">Please fill up the form</h4>
-                <form id="signupForm" action="wheel.html">
+                <div id="formMessage" style="color: red; font-weight: bold; margin-left: 10px; "></div>
+                <form id="signupForm">
                     <div class="mb-3">
                         <label for="name" class="form-label">Name<a style="color: blue;">*</a></label>
-                        <input type="text" class="form-control" id="name" name="name" required>
+                        <input type="text" class="form-control" id="name" name="Name" required>
                     </div>
                     <div class="mb-3">
                         <label for="title" class="form-label">Designation</label>
-                        <input type="text" class="form-control" id="title" name="title">
+                        <input type="text" class="form-control" id="title" name="Designation">
                     </div>
                     <div class="mb-3">
                         <label for="phone" class="form-label">Phone Number<a style="color: blue;">*</a></label>
-                        <input type="tel" class="form-control" id="phone" name="phone" required>
+                        <input type="number" class="form-control" id="phone" name="PhoneNumber" required>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email<a style="color: blue;">*</a></label>
-                        <input type="email" class="form-control" id="email" name="email" required>
+                        <input type="email" class="form-control" id="email" name="Email" required>
                     </div>
                     <div class="mb-3">
                         <label for="company" class="form-label">Company<a style="color: blue;">*</a></label>
-                        <input type="text" class="form-control" id="company" name="company" required>
+                        <input type="text" class="form-control" id="company" name="Company" required>
                     </div>
                     <div class="mb-3">
-                        <label for="company" class="form-label">Industry</label>
-                        <input type="text" class="form-control" id="company" name="company">
+                        <label for="industry" class="form-label">Industry</label>
+                        <input type="text" class="form-control" id="industry" name="Industry">
                     </div>
-                    <form id="checkboxForm" class="col-12 col-md-6">
-                        <h4>State your interest:</h4>
-                        <div class="form-check mt-5">
-                            <input class="form-check-input" type="checkbox" id="checkbox1" name="options"
-                                value="option1">
-                            <label class="form-check-label" for="checkbox1">POS</label>
+                    <!--<form id="checkboxForm" class="col-12 col-md-6">-->
+                    <h4>State your interest:</h4>
+                    <div class="container mt-5">
+                        <div class="row">
+                            <!-- Create 7 rows -->
+                            <div class="col-12">
+                                <!-- First Column with 7 Checkboxes -->
+                                <div class="row">
+                                    <!-- Create 2 equal columns -->
+                                    <div class="col-lg-6 col-md-12 mb-3">
+                                        <div class="row">
+                                            <div class="col-12 mb-2">
+                                                <div class="checkbox-container">
+                                                    <input type="checkbox" class="form-check-input" id="checkbox1"
+                                                        name="Point-of-Sales Solution" value="✔">
+                                                    <label class="form-check-label" for="checkbox1">Point-of-Sales
+                                                        Solution</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-2">
+                                                <div class="checkbox-container">
+                                                    <input type="checkbox" class="form-check-input" id="checkbox2"
+                                                        name="Cliq Ordering [Pre-order]" value="✔">
+                                                    <label class="form-check-label" for="checkbox2">Cliq Ordering
+                                                        [Pre-order]</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-2">
+                                                <div class="checkbox-container">
+                                                    <input type="checkbox" class="form-check-input" id="checkbox3"
+                                                        name="Self-Ordering Kiosk" value="✔">
+                                                    <label class="form-check-label" for="checkbox3">Self-Ordering
+                                                        Kiosk</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-2">
+                                                <div class="checkbox-container">
+                                                    <input type="checkbox" class="form-check-input" id="checkbox4"
+                                                        name="Kitchen Display System" value="✔">
+                                                    <label class="form-check-label" for="checkbox4">Kitchen Display
+                                                        System</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-2">
+                                                <div class="checkbox-container">
+                                                    <input type="checkbox" class="form-check-input" id="checkbox5"
+                                                        name="Order Collection" value="✔">
+                                                    <label class="form-check-label" for="checkbox5">Order
+                                                        Collection</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-2">
+                                                <div class="checkbox-container">
+                                                    <input type="checkbox" class="form-check-input" id="checkbox6"
+                                                        name="Online/QR Ordering" value="✔">
+                                                    <label class="form-check-label" for="checkbox6">Online/QR
+                                                        Ordering</label>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <!-- Second Column with 7 Checkboxes -->
+                                    <div class="col-lg-6 col-md-12 mb-3">
+                                        <div class="row">
+                                            <div class="col-12 mb-2">
+                                                <div class="checkbox-container">
+                                                    <input type="checkbox" class="form-check-input" id="checkbox7"
+                                                        name="eMenu & eWaiter" value="✔">
+                                                    <label class="form-check-label" for="checkbox7">eMenu &
+                                                        eWaiter</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-2">
+                                                <div class="checkbox-container">
+                                                    <input type="checkbox" class="form-check-input" id="checkbox8"
+                                                        name="Turnkey Solution [B2B]" value="✔">
+                                                    <label class="form-check-label" for="checkbox8">Turnkey Solution
+                                                        [B2B]</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-2">
+                                                <div class="checkbox-container">
+                                                    <input type="checkbox" class="form-check-input" id="checkbox9"
+                                                        name="Payment Solution" value="✔">
+                                                    <label class="form-check-label" for="checkbox9">Payment
+                                                        Solution</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-2">
+                                                <div class="checkbox-container">
+                                                    <input type="checkbox" class="form-check-input" id="checkbox10"
+                                                        name="Inventory Solution" value="✔">
+                                                    <label class="form-check-label" for="checkbox10">Inventory
+                                                        Solution</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-2">
+                                                <div class="checkbox-container">
+                                                    <input type="checkbox" class="form-check-input" id="checkbox11"
+                                                        name="Live Analytics" value="✔">
+                                                    <label class="form-check-label" for="checkbox11">Live
+                                                        Analytics</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-2">
+                                                <div class="checkbox-container">
+                                                    <input type="checkbox" class="form-check-input" id="checkbox12"
+                                                        name="Cloud Console" value="✔">
+                                                    <label class="form-check-label" for="checkbox12">Cloud
+                                                        Console</label>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="checkbox2" name="options"
-                                value="option2">
-                            <label class="form-check-label" for="checkbox2">Ordering Solution</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="checkbox3" name="options"
-                                value="option3">
-                            <label class="form-check-label" for="checkbox3">Online Ordering</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="checkbox4" name="options"
-                                value="option4">
-                            <label class="form-check-label" for="checkbox4">Self Ordering Kiosk</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="checkbox4" name="options"
-                                value="option4">
-                            <label class="form-check-label" for="checkbox4">Queue Management System</label>
-                        </div>
-                        <div class="form-check mb-5">
-                            <input class="form-check-input" type="checkbox" id="checkbox4" name="options"
-                                value="option4">
-                            <label class="form-check-label" for="checkbox4">Self Ordering Kiosk</label>
-                        </div>
+                    </div>
 
 
+
+
+
+                    <div class="d-grid mt-5">
+                        <button type="submit" class="btn btn-primary mb-5">Next</button>
+                    </div>
+
+                </form>
+
             </div>
-            <div class="d-grid">
-                <button type="submit" class="btn btn-primary">Next</button>
-            </div>
-            </form>
+
         </div>
 
     </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyqysH3VlB_OWSnlue0MI5uRk2I7YxVAIjM9rIFrCHex7WkFXfIy9f5-tFvuFKlD3cWQQ/exec';
+        const form = document.getElementById('signupForm');
+        const messageDiv = document.getElementById('formMessage');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => response.json())
+                .then(json => {
+                    if (json.result === 'duplicate') {
+                        messageDiv.textContent = "Duplicate data detected, please check your phone number and email"; // Display the duplicate message
+                        messageDiv.style.color = 'red'; // Customize the message color (optional)
+                    } else if (json.result === 'success') {
+                        messageDiv.textContent = "Form submitted successfully!"; // Success message
+                        messageDiv.style.color = 'green'; // Customize the success message color (optional)
+                        // Optionally, redirect to another page
+                        window.location.href = "wheel.html";
+                    } else {
+                        messageDiv.textContent = "Error: " + json.error; // Display error message
+                        messageDiv.style.color = 'red';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    messageDiv.textContent = "Error: " + error.message; // Display network error
+                    messageDiv.style.color = 'red';
+                });
+        });
+    </script>
 </body>
 
 </html>

@@ -2,16 +2,36 @@ const wheel = document.getElementById('wheel');
 const spinBtn = document.getElementById('spin-btn');
 const ctx = wheel.getContext('2d');
 
+
+// REMOVE NAME OF ITEM IF STOCK FINISHED
 const segments = [
-    'Raif', 'Sky', 'Feivel', 'Si Xue', 'Phyline',
-    'Prize 6', 'Prize 7', 'Prize 8', 'Prize 9', 'Prize 10',
-    'Prize 11', 'Prize 12', 'Prize 13', 'Prize 14', 'Prize 15','Prize 16'
+   '2','1','2','1','3',
+   '2','1','2','1','3',
+   '2','1','2','1','JACKPOT!',
+   '2','2','1',
+   '2','2','1',
+   '2','2','1',
 ];
+// nets 6
+// ball 9
+// hygeine 6
+// umbrella 2
+// jp 1
 const segmentColors = [
-    '#2362fb','#f39b2d','#2362fb','#f39b2d',
-    '#2362fb','#f39b2d','#2362fb','#f39b2d',
-    '#2362fb','#f39b2d','#2362fb','#f39b2d',
-    '#2362fb','#f39b2d','#2362fb','#f39b2d'
+
+
+    /**'#005CE5','#346bc2','#4280e3','#346bc2','#2e78f0','#346bc2',
+    '#005CE5','#346bc2','#4280e3','#346bc2','#2e78f0','#346bc2',
+    '#005CE5','#346bc2','#4280e3','#346bc2','#000000','#346bc2',
+    '#005CE5','#346bc2','#4280e3','#346bc2','#2e78f0','#346bc2',
+**/
+    '#005CE5','#346bc2','#4280e3','#346bc2','#2e78f0',
+    '#005CE5','#346bc2','#4280e3','#346bc2','#2e78f0',
+    '#005CE5','#346bc2','#4280e3','#346bc2','#000000',
+    '#005CE5','#346bc2','#4280e3',
+    '#005CE5','#346bc2','#4280e3',
+    '#005CE5','#346bc2','#4280e3',
+
 ];
 const numSegments = segments.length;
 let anglePerSegment;
@@ -105,7 +125,8 @@ function showPrize() {
     const prize = segments[segmentIndex];
 
     //alert("You won " + prize);
-
+    //session to key in prize won
+    sessionStorage.setItem('wonPrize', prize);
     setTimeout(() => {
         // Replace the current page with the result page
         window.location.replace(`result.html?prize=${encodeURIComponent(prize)}`);

@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spin the Wheel</title>
+    <link rel="icon" href="https://hashmato.com/wp-content/uploads/2024/08/cropped-hashmato-fav-icon-32x32.png"
+    sizes="32x32">
     <style>
         body {
             display: flex;
@@ -30,7 +32,7 @@
             position: absolute;
             left:50%;
             transform: translate(-50%, 50%);
-            padding: 10px 30px;
+            padding: 10px px;
             font-size: 30px;
             color: white;
             background-color: blue;
@@ -43,8 +45,23 @@
     <div id="canvas-container">
         <canvas id="wheel"></canvas>
         <button id="spin-btn" class="btn-primary">Spin</button>
+        
     </div>
     <script src="script.js"></script>
+
+    <!-- COMMENT THIS SCRIPT OUT IF YOU WANT TO FREELY RUN BETWEEN PAGES - -------------------> 
+    <script>
+        // Check if the form was completed
+        const formCompleted = sessionStorage.getItem('formCompleted');
+        
+
+        if (formCompleted !== 'true') {
+            // If the form wasn't completed, redirect back to the form page
+            alert('Please fill out the form first! 😋');
+            window.location.href = 'index.html';
+        }
+
+    </script>
 </body>
 </html>
 

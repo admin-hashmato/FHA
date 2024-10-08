@@ -32,6 +32,7 @@
             font-size: 1.5em;
             color: #666;
         }
+
         .rainbow-animate {
             font-size: 60px;
             font-weight: bold;
@@ -42,8 +43,13 @@
         }
 
         @keyframes rainbow-animation {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 100% 50%;
+            }
         }
     </style>
 </head>
@@ -159,28 +165,28 @@
                 if (prize === '1') {
                     //resultMessage.textContent = "Congratulations! You won a NETS Card!";
                     // Add an image or custom behavior for NETS Card
-                    showPrizeImage('You get 1 Tomato!');
+                    showPrizeImage('You get 1 Tomato attempt!');
 
                 } else if (prize === '2') {
                     //resultMessage.textContent = "Awesome! You won a Tomato Stress Ball!";
                     // Custom action for Tomato Stress Ball
-                    showPrizeImage('You get 2 Tomatoes!');
+                    showPrizeImage('You get 2 Tomatoes attempts!');
 
 
                 } else if (prize === '3') {
                     //resultMessage.textContent = "Great! You won a Hygiene Kit!";
                     // Custom action for Hygiene Kit
-                    showPrizeImage('You get 3 Tomatoes!');
+                    showPrizeImage('You get 3 Tomatoes attempts!');
 
                 } else if (prize === '4') {
                     //resultMessage.textContent = "Nice! You won an Umbrella!";
                     // Custom action for Umbrella
-                    showPrizeImage('You get 4 Tomatoes!');
+                    showPrizeImage('You get 4 Tomatoes attempts!');
 
                 } else if (prize === '5') {
                     //resultMessage.textContent = "Nice! You won an Umbrella!";
                     // Custom action for Umbrella
-                    showPrizeImage('You get 5 Tomatoes!');
+                    showPrizeImage('You get 5 Tomatoes attempts!');
 
                 } else if (prize === 'JACKPOT!') {
                     //resultMessage.textContent = "Jackpot!!! You won the grand prize!";

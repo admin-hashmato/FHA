@@ -5,12 +5,12 @@ const ctx = wheel.getContext('2d');
 
 // REMOVE NAME OF ITEM IF STOCK FINISHED
 const segments = [
-   '2','1','2','1','3',
-   '2','1','2','1','3',
-   '2','1','2','1','JACKPOT!',
-   '2','2','1',
-   '2','2','1',
-   '2','2','1',
+    '2', '1', '2', '1', '3',
+    '2', '1', '2', '1', '3',
+    '2', '1', '2', '1', '3',
+    '2', '2', '1',
+    '2', '2', '1',
+    '2', '2', '1',
 ];
 // nets 6
 // ball 9
@@ -18,18 +18,17 @@ const segments = [
 // umbrella 2
 // jp 1
 const segmentColors = [
-    /**'#005CE5','#346bc2','#4280e3','#346bc2','#2e78f0','#346bc2',
+    /**'#005CE5','#346bc2','#4280e3','#346bc2','#2e78f0','# ',
     '#005CE5','#346bc2','#4280e3','#346bc2','#2e78f0','#346bc2',
-    '#005CE5','#346bc2','#4280e3','#346bc2','#000000','#346bc2',
+    '#005CE5','#346bc2','#4280e3','#346bc2','#4280e3','#346bc2',
     '#005CE5','#346bc2','#4280e3','#346bc2','#2e78f0','#346bc2',
 **/
-    '#005CE5','#346bc2','#4280e3','#346bc2','#2e78f0',
-    '#005CE5','#346bc2','#4280e3','#346bc2','#2e78f0',
-    '#005CE5','#346bc2','#4280e3','#346bc2','#000000',
-    '#005CE5','#346bc2','#4280e3',
-    '#005CE5','#346bc2','#4280e3',
-    '#005CE5','#346bc2','#4280e3',
-
+    '#005CE5', '#346bc2', '#4280e3', '#346bc2', '#2e78f0',
+    '#005CE5', '#346bc2', '#4280e3', '#346bc2', '#2e78f0',
+    '#005CE5', '#346bc2', '#4280e3', '#346bc2', '#4280e3',
+    '#005CE5', '#346bc2', '#4280e3',
+    '#005CE5', '#346bc2', '#4280e3',
+    '#005CE5', '#346bc2', '#4280e3',
 ];
 const numSegments = segments.length;
 let anglePerSegment;
@@ -130,7 +129,6 @@ function showPrize() {
         window.location.replace(`result.html?prize=${encodeURIComponent(prize)}`);
     }, 2000); // 2000 milliseconds = 2 seconds delay
 }
-
 
 // Resize canvas on window resize
 window.addEventListener('resize', resizeCanvas);
